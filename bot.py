@@ -60,7 +60,7 @@ def newBot(botToken):
             print("{0} rpg {1} -> {2.name}".format(getPrefix(), command.command, message.author))
             await msg.channel.send('You can use **rpg {0}** again! {1}'.format(command.command, id))
 
-        if message.content.startswith("!timer"):
+        if message.content.lower().startswith("!timer"):
             if message.author.id in enabledTimers:
                 enabledTimers.remove(message.author.id)
                 print("{0} {1.name} -> disabled timer".format(getPrefix(), message.author))
@@ -69,7 +69,7 @@ def newBot(botToken):
                 enabledTimers.append(message.author.id)
                 print("{0} {1.name} -> enabled timer".format(getPrefix(), message.author))
                 await message.channel.send("You have enabled the timer!")
-        if not message.content.startswith("rpg"):
+        if not message.content.lower().startswith("rpg"):
             return
         if not message.author.id in enabledTimers:
             return
